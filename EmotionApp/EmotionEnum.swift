@@ -7,10 +7,12 @@
 
 import Foundation
 
-enum Emotion: String, CaseIterable {
-    case veryHappy = "완전행복지수"
-    case happy = "적당미소지수"
-    case soSo = "그냥그냥지수"
-    case sad = "좀속상한지수"
-    case verySad = "많이슬픈지수"
+enum Emotion: Int, CaseIterable {
+    case veryHappy
+    case happy
+    case soSo
+    case sad
+    case verySad
 }
+
+

@@ -11,8 +11,7 @@ class EmotionViewController: UIViewController {
 
     @IBOutlet var emotionButton: [UIButton]!
     
-    let emo = Emotion.allCases
-    var count = [1, 1, 1, 1, 1]
+    var count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +22,12 @@ class EmotionViewController: UIViewController {
     
     @IBAction func emotionButtonPressed(_ sender: UIButton) {
         
-        UserDefaults.standard.set(count[sender.tag - 1], forKey: emo[sender.tag - 1].rawValue)
-        count[sender.tag - 1] += 1
-        print("\(emo[sender.tag - 1])가 \(UserDefaults.standard.integer(forKey: emo[sender.tag - 1].rawValue))번 눌렸습니다.")
+        count = UserDefaults.standard.integer(forKey: "\(Emotion(rawValue: sender.tag)!)")
+        
+        UserDefaults.standard.set(count + 1, forKey: "\(Emotion(rawValue: sender.tag)!)")
+        
+        //UserDefaults.standard.set(count[Emotion.veryHappy.rawValue], forKey: Emotion.veryHappy)
+        //print("\(emo[sender.tag - 1])가 \(UserDefaults.standard.integer(forKey: emo[sender.tag - 1].rawValue))번 눌렸습니다.")
     }
     
     func setButton() {
@@ -33,7 +35,7 @@ class EmotionViewController: UIViewController {
             
             button.setTitle("", for: .normal)
             
-            button.setImage(UIImage(named: "emoji\(button.tag)"), for: .normal)
+            button.setImage(UIImage(named: "emoji\(button.tag + 1)"), for: .normal)
             
             //UserDefaults.standard.set(0, forKey: emo[button.tag - 1].rawValue)
             
