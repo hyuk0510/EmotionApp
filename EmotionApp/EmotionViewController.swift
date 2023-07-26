@@ -23,7 +23,6 @@ class EmotionViewController: UIViewController {
     
     @IBAction func emotionButtonPressed(_ sender: UIButton) {
         
-        
         UserDefaults.standard.set(count[sender.tag - 1], forKey: emo[sender.tag - 1].rawValue)
         count[sender.tag - 1] += 1
         print("\(emo[sender.tag - 1])가 \(UserDefaults.standard.integer(forKey: emo[sender.tag - 1].rawValue))번 눌렸습니다.")
@@ -36,7 +35,7 @@ class EmotionViewController: UIViewController {
             
             button.setImage(UIImage(named: "emoji\(button.tag)"), for: .normal)
             
-            UserDefaults.standard.set(0, forKey: emo[button.tag - 1].rawValue)
+            //UserDefaults.standard.set(0, forKey: emo[button.tag - 1].rawValue)
             
         }
     }
